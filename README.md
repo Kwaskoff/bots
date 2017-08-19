@@ -11,14 +11,24 @@
 # 📡 Список телеграм ботов для голоса:
 
 Для голосования на Golos.io:
-https://t.me/golosrobot / https://t.me/autoupvotebot / https://t.me/hottabot / https://t.me/upvbot / https://t.me/uppbot / https://t.me/up2bot / https://t.me/votexbot / https://t.me/xvotebot / https://t.me/g0fuckbot / https://t.me/solocuratorbot 
+* https://t.me/golosrobot 
+* https://t.me/autoupvotebot
+* https://t.me/hottabot
+* https://t.me/upvbot
+* https://t.me/uppbot
+* https://t.me/up2bot 
+* https://t.me/votexbot 
+* https://t.me/xvotebot
+* https://t.me/g0fuckbot 
+* https://t.me/solocuratorbot 
 
 На Steemit.com
-https://t.me/steemxbot
-https://t.me/steemrobot - new
+* https://t.me/steemxbot
+* https://t.me/steemrobot - new
 
 Бот который голосует только за посты размещенные из вебклиента мапалы:
 https://t.me/mapvotebot
+
 Бот для чтения ленты мапалы:
 https://t.me/mapalabot 
 
