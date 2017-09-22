@@ -24,14 +24,14 @@ client.hgetall('vik-token', function(err, db) {
 	if(err) return console.warn(err)
 	if(db.Septidea){
 		
-		for(let params of JSON.parse(db.Septidea)){
+		for(let s of JSON.parse(db.Septidea)){
 		
-			let x = params.users.split(",")
-			let z = params.keyword === word
+			let x = s.users.split(",")
+			let z = s.keyword === word
 			let y = x.includes(test)
 			
-				console.log(x,z,y)
-		
+			if(z&&y)	console.log(s.vote*100,s.delay*1000)
+			
 		}
 	} else {
 		console.warn(db.Septidea)
