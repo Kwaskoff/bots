@@ -6,6 +6,7 @@
 
 * 📑 TXT Исправить опечатки в описаниях и адаптировать меню 
 * 🔬 Добавить возможность индивидуальной настройки силы и отсрочки для каждого фаворита 🔌
+* 🔄 Обновить steemxbot и steemrobot на версию с [ключевыми словами](https://golos.io/ru--golos/@vik/v-betarobot-dobavlen-novyi-funkcional-prizyv-kita-golosovanie-po-klyuchevym-slovam-v-kommentariyakh-i-uchastie-v-programmakh#@rubin/re-vik-v-betarobot-dobavlen-novyi-funkcional-prizyv-kita-golosovanie-po-klyuchevym-slovam-v-kommentariyakh-i-uchastie-v-programmakh-20170923t213758902z)
 * 🔬 Добавить возможность исключения учета комментариев при повторах за кураторами 
 * 🔬 Добавить анализ активности подписчиков в folloyaltybot
 * 🔬 Исключить заблокированных в folloyaltybot 
