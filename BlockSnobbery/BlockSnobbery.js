@@ -2,7 +2,7 @@ const graphene = require("golos-js")
 //rename "golos-js" to "steem" for steemit blockchain (needs "npm install steem" comant in script dir.)
 
 graphene.config.set('websocket','wss://api.golos.cf'); 
-// or wss://steemd.steemit.com for steem blockchain. Also allowed "localhost:port" sheme
+// or wss://node.steemnode.ws for steem blockchain. Also allowed "localhost:port" sheme
 
 // You can set start block for bygone process
 // client.hmset("GolosLastBlock", "num","10000123")
@@ -86,13 +86,13 @@ if         (x === lastblock+1)																		return readblock(x,green,       
 else if (x !== lastblock+1 && lastblock > 0 && x > lastblock) 	return readblock(lastblock+1,green,    `[${x-lastblock} Overtake 🏃]\x1b[0m`)	
 	
 // If the last block and the resulting one are equal, there is no growth. 
-else if (x === lastblock) 			return readblock(x+1,red,              `[${x-lastblock} OverSlow ♻️]`)	
+else if (x === lastblock) 																		return readblock(x+1,red,              `[${x-lastblock} OverSlow ♻️]`)	
 	
 // If the last block does not equal the next one
-else if (x > lastblock+1 && lastblock > 0)  	return readblock(lastblock+1,red,    `[${x-lastblock} OverMiss ♻️]`)	
+else if (x > lastblock+1 && lastblock > 0)  										return readblock(lastblock+1,red,    `[${x-lastblock} OverMiss ♻️]`)	
 	
 //If the height of the resulting block is less than the last processed block
-else if (x < lastblock) 			return readblock(lastblock+1,red,`[${x-lastblock} OverFast ♻️]`)
+else if (x < lastblock) 																			return readblock(lastblock+1,red,`[${x-lastblock} OverFast ♻️]`)
 
 // in case script crashing , continue from the last processed block
 client.hgetall("GolosLastBlock",(err, redisblock) => {
@@ -222,7 +222,7 @@ let log = `   ${x}   ------->   ${cause}    ⌛️ Age of last TX ${delay.toFixe
 	if(B[0].op){
 		let ops = []
 		for(let tx of B){
-				ops.push(tx.operations)
+				ops.push(tx.op)
 		}
 			let JSONblock = JSON.stringify(ops)
 			
