@@ -2,7 +2,7 @@ const graphene = require("golos-js")
 //rename "golos-js" to "steem" for steemit blockchain (needs "npm install steem" comant in script dir.)
 
 graphene.config.set('websocket','wss://api.golos.cf'); 
-// or wss://node.steemnode.ws for steem blockchain. Also allowed "localhost:port" sheme
+// or wss://steemd.steemit.com for steem blockchain. Also allowed "localhost:port" sheme
 
 // You can set start block for bygone process
 // client.hmset("GolosLastBlock", "num","10000123")
