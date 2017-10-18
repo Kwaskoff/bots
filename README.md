@@ -45,6 +45,7 @@ https://t.me/goloschain
 
 Для голосования на Golos.io:
 * https://t.me/upvote100bot - текущее тестирование обновлений
+* https://t.me/upvoterbot - текущее тестирование обновлений
 * https://t.me/betarobot (Новейшие функции появляются сначала в BetaRobot, затем в остальных после тестирования)  
 * https://t.me/golosrobot 
 * https://t.me/autoupvotebot
