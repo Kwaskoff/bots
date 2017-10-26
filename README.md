@@ -144,24 +144,28 @@ Cписок разрешенных пользователей users
 * [MapvoteBot](https://t.me/mapvotebot)
 * [TopocBot](https://t.me/topocbot)
 * [StrecozaBot](https://t.me/strecozabot)
+* [GoldvoiceBot](https://t.me/goldvoicebot)
 
 
-Для голосования на Steemit.com
-* https://t.me/steemxbot - old (Будут обновлены завтра)
-* https://t.me/steemrobot - old (Будут обновлены завтра)
+## Для голосования на Steemit.com
 
-Чат-Лента постов с возможность ручного голосования в чате:
+* [SteemRobot](https://t.me/steemrobot) 
+* [SteemXbot](https://t.me/steemxbot)
+* [SteemZbot](https://t.me/Steemzbot)
+
+
+#### Чат-Лента постов с возможность ручного голосования в чате:
 https://t.me/goloschain
 
-Чат-Мониторинг пропущенных блоков делегатов
+#### Чат-Мониторинг пропущенных блоков делегатов
 https://t.me/WitnessMonitor
 
-Бот для чтения ленты мапалы:
+#### Бот для чтения ленты мапалы:
 https://t.me/mapalabot old
 
 
-Бот для sept  (кошелек для массовых платежей) 
+#### Бот для sept  (кошелек для массовых платежей) 
 https://t.me/septcurbot
 
-Кошелек для массовых выплат бонусов подписчикам
+#### Кошелек для массовых выплат бонусов подписчикам
 https://t.me/folloyaltybot
