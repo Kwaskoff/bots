@@ -1,8 +1,8 @@
-## [Ход работы](https://github.com/vikxx/bots/projects/1)
-## [Задачи](https://github.com/vikxx/bots/issues/new)
-## [Предложить функционал или сообщить об ошибке (issue)](https://github.com/vikxx/bots/issues/new)
-## [Обратная связь в телеграм: @chain_cf](https://t.me/chain_cf)
-## [Блог](https://golos.io/@vik)
+### [Ход работы](https://github.com/vikxx/bots/projects/1)
+### [Задачи](https://github.com/vikxx/bots/issues/new)
+### [Предложить функционал или сообщить об ошибке (issue)](https://github.com/vikxx/bots/issues/new)
+### [Обратная связь в телеграм: @chain_cf](https://t.me/chain_cf)
+### [Блог](https://golos.io/@vik)
 
 
 
