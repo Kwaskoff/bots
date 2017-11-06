@@ -5,7 +5,6 @@
 ### [Блог](https://golos.io/@vik)
 
 
-
 ### Новые опции
 Теперь команда `/menu` не только открывает главную страницу меню, но еще выводит дополнительные переключатели 
 ![](https://images.golos.io/DQmeq7QCLFj4KFc9oudoBw3nHe6UEmWKL8XXZHzjnCPYrgc/image.png)
