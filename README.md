@@ -1,3 +1,28 @@
+# 📡 Список телеграм ботов для голоса:
+
+
+Для голосования и размещения постов на Golos.io:
+
+* [BetaRobot](https://t.me/betarobot) (Новейшие функции появляются сначала в BetaRobot, затем в остальных после тестирования)
+* [GolosRobot](https://t.me/golosrobot)
+* [UpvoterBot](https://t.me/upvoterbot)
+* [Upvote100bot](https://t.me/upvote100bot) 
+* [UpvotemeBot](https://t.me/upvotemebot)
+* [AutoUpvoteBot](https://t.me/autoupvotebot)
+* [Hottabot](https://t.me/hottabot)
+* [UpvBot](https://t.me/upvbot)
+* [UppBot](https://t.me/uppbot)
+* [Up2Bot](https://t.me/up2bot)
+* [VotexBot](https://t.me/votexbot)
+* [XvoteBot](https://t.me/xvotebot)
+* [G0fuckBot](https://t.me/g0fuckbot)
+* [SoloCuratorBot](https://t.me/solocuratorbot) 
+* [MapvoteBot](https://t.me/mapvotebot)
+* [TopocBot](https://t.me/topocbot)
+* [StrecozaBot](https://t.me/strecozabot)
+* [GoldvoiceBot](https://t.me/goldvoicebot)
+
+
 ### [Ход работы](https://github.com/vikxx/bots/projects/1)
 ### [Задачи](https://github.com/vikxx/bots/issues/new)
 ### [Предложить функционал или сообщить об ошибке (issue)](https://github.com/vikxx/bots/issues/new)
@@ -127,29 +152,6 @@ Cписок разрешенных пользователей users
 
 
 
-# 📡 Список телеграм ботов для голоса:
-
-
-Для голосования на Golos.io:
-
-* [BetaRobot](https://t.me/betarobot) (Новейшие функции появляются сначала в BetaRobot, затем в остальных после тестирования)
-* [GolosRobot](https://t.me/golosrobot)
-* [UpvoterBot](https://t.me/upvoterbot)
-* [Upvote100bot](https://t.me/upvote100bot) 
-* [UpvotemeBot](https://t.me/upvotemebot)
-* [AutoUpvoteBot](https://t.me/autoupvotebot)
-* [Hottabot](https://t.me/hottabot)
-* [UpvBot](https://t.me/upvbot)
-* [UppBot](https://t.me/uppbot)
-* [Up2Bot](https://t.me/up2bot)
-* [VotexBot](https://t.me/votexbot)
-* [XvoteBot](https://t.me/xvotebot)
-* [G0fuckBot](https://t.me/g0fuckbot)
-* [SoloCuratorBot](https://t.me/solocuratorbot) 
-* [MapvoteBot](https://t.me/mapvotebot)
-* [TopocBot](https://t.me/topocbot)
-* [StrecozaBot](https://t.me/strecozabot)
-* [GoldvoiceBot](https://t.me/goldvoicebot)
 
 
 ## Для голосования на Steemit.com
