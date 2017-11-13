@@ -1,1 +1,535 @@
-// todo
+{
+    menuRun:"🚀 Run",
+    menuStop:"⭕️ Stop",
+    menuPower:"💯 Power",
+    menuCurators:"🚂 Curators",
+    menuTags:"🔖 Tags",
+    menuFavs:"🎯 Favorites",
+    menuBlackList:"⚰ BlackList",
+    menuStatus:"🎛 Status",
+    menuChat:"🖖 Chat",
+    menuTnx:"🍫 Thanks",
+    noticeOld:`💽 <b>You use old version of the bot</b>
+    Click /start for up to date _{BOT_ID}
+    `,
+    msgRun:`🚀 <b>Bot is activated</b>  
+    Bot tracks voices of your curators and posts of favorites in real-time. List of favorites and curators you can specify in /menu`,
+menuMsgAnswer:'💭 Answer',
+menuMsgVote:'🤘🏻 Vote',
+msgLogKeywords:`<a href="https://golos.io/x/@_{author}/_{permlink}/">_{author} 🌀 _{ss.vote}%</a>  
+📡 <b>You invited to vote  @_{opData.author}</b>
+Comment with the keyword: 
+<code>_{ss.keyword}</code>
+
+You can specify keywords, aloud commentators, vote power and delay in settings.
+`,
+menuMsgCancelVote:'🔪 Unvote',
+menuMsgComment:'💭 Comment',
+menuMsgRevote:'⚖️ Revote with another power',
+menuMsgRead:'📘 Read post',
+menuMsgFollow:'📌 Follow and add to favorite',
+errSmallPower:`⛔️<b>Error! You VP is too small</b>
+You can’t change vote power_{VOTEPOWER/100}% because voice power of your account is to small to be divided on.
+Change your voice power on 100% in settings!
+							
+Loosed post: <a href="https://golos.io/robot/@_{opData.author}/_{opData.permlink}/">@_{opData.author}</a>`,
+msgLogCuratorVote:`<a href="https://golos.io/robot/@_{opData.author}/_{opData.permlink}/">_{opData.author} 🌀 _{Number(VOTEPOWER) / 100}%</a> 🌡 <b>_{yourpower}%</b> <code>#_{trig.countvotes+1}</code>
+<b>_{opData.voter}</b> 🚇 _{opData.weight/ 100}%`,
+msgLogFavoriteVote:`<a href="https://golos.io/robot/@_{opData.author}/_{opData.permlink}/">_{opData.author} 🌀 _{Number(VOTEPOWER) / 100}%</a> 🌡 <b>_{yourpower}%</b> <code>#_{trig.countvotes+1}</code>
+<code>_{showTags}</code>`,
+ menuCustomVote:'🤘 Vote',
+ msgLogIgnoreWNoPower:`<a href="https://golos.io/x/@_{author}/_{permlink}/">🛡 Saving power!</a>
+ <b>BOT DID NOT VOTE FOR THIS POST</b>
+                     
+ <b>You did not upvote this post because your power _{yourpower}%</b>
+ 
+The voting will rerun a soon as you will restore to the pointed <b> second </b> limit _{rdb.newpowlim}%
+ If you will run bot again by 🚀 Run button  - you will ignore the second limit and will start vote if your voice power large enough _{rdb.powlimit}% (First limit)
+ 
+ On this moment your power is _{yourpower}%. 
+ You can view your balance and settings /me command
+ `,
+msgHasUpdate:`🔥 <b>Bot is updated!</b>
+
+New functions added:
+Vote for all posts option
+Vote for posts with specified tags
+Separate change voting power for a different situation
+Individual settings of power and delay for every favorites 
+The voting based on having keywords in the posts comments  
+Changing settings in action, no need to restart the bot 
+
+And many others...
+
+<b>To apply this update restart bot use command:</b>
+ /start
+
+After follow the tips in the message and tune the bot.
+Additional options open in /menu
+The updating details you can find in @viknews channel and in the @chain_cf chat `,
+
+menuSetKey:
+`🗝 <b>Write your private posting key</b>
+
+Your private posting key you can find in Steemit settings: 
+<code>wallet > permission > posting > show private key > 5AbCde....</code>
+Don’t disturb - Bot doesn’t have access to your wallet and will not be able to change your account.
+
+If you don’t understand what we are about -  write to the chat @chain_cf`,
+
+menuWelcome:
+`🚀 <b>Welcome to</b> _{BOT_ID} !
+
+This bot will aloud you automatically vote for posts from your favorites, repeat vote for your curators, vote for specific tags or for all posts, change voting power, to receive and send comments using telegram.
+
+If you have problems with configuring the bot, contact the chat @chain_cf
+
+<b>Please, write your Steemit login </b> 👇`,
+
+menuButtonLogin:'️🔌 Login',
+menuButtonKey:'🔑 Posting key',
+
+menuMsgOptions:
+`#Options
+1. <b>Vote for posts all authors except blacklist logins and tags</b>
+/VoteAll_ON  - On
+/VoteALL_OFF - Off
+
+2. <b>Vote for all posts with have the specify tags</b>
+/VoteTAG_ON  - On
+/VoteTAG_OFF - Off
+
+3. <b>Copy curator vote weight</b>
+/PowerCopy_ON  - On
+/PowerCopy_OFF - Off
+
+4. <b>Option "Read only" transform bot in to the "reader" for the soft settled feed</b>
+/RO_ON  - On
+/RO_OFF - Off
+
+5. <b>Curators can change your voice weight for own voice weight</b>
+<code>The change will be only if your voice less than 90%, and new weight is more then 10%</code>
+/changeVote_ON  - On 
+/changeVote_OFF - Off
+
+6. <b>Receive comments for your posts on the</b>
+/comm_ON  - On
+/comm_OFF - Off
+
+Help: @chain_cf`,
+
+menuPartsFollowsToMany:
+'We cannot import whole follower list, because it is too large. But you can use the "create a new list" button and write any quantity users nickname by yourself. Besides the importing favorites list you can add favorites into the menu in a different ways',
+
+menuMsgAboutImport:
+`📲 <b>Followings import</b>
+
+By clicking the button below you can add to favorites list those users, which you are following on Steemit.com 
+Import limit - 50 people.
+<b>_{cut}</b>
+You are following :<code>_{FavList}</code>
+`,
+menuButtonImport:
+'📲 Import',
+
+menuMsgAskLogin:
+`🔗 <b>Write your Steemit.com login</b>`,
+
+menuMsgAskKey:
+`Write your private posting key`,
+
+menuMsgAskCreateCurList:
+`🚂 Write the curators nicknames using comma
+For example: <code>vik,ropox,dimarss</code>
+Bot will repeat curators votes.`,
+
+menuMsgAskFavList:
+`Names of your favorites. Write them`,
+
+menuMsgAskLimFirst:
+`<b>Set BOTTOM power limit from 0 to 100</b>
+
+This is the setting <b>for the first threshold</b> your power. 
+When your power drops to the specified value, the bot will suspend the work and wait for the second threshold. Set this parameter in the second power limit settings. 
+It is logical that the second threshold should be higher than the first.
+When your bot stops because of the preset first limit of power, it will wait until your account gets strength to the second threshold, specified by you. 
+By default, the first threshold is 55, and the second is 90. This means that when you power fall down to 55%, the bot will wait until you gain strength to 90% to resume the vote. `,
+
+menuMsgAskLimSecond:
+`<b>Set the UPPER power limit from 0 to 100</b>
+
+This is the setting <b>for the second threshold</b> your power.
+When your bot stops because of the preset first limit of power, it will wait until your account gets strength to the second threshold, specified by you. 
+By default, the first threshold is 55, and the second is 90. This means that when you power fall down to 55%, the bot will wait until you gain strength to 90% to resume the vote.`,
+
+menuMsgResetTags:
+` The list of favorites and forbidden tags is reset! `,
+
+noticePower:
+`<b>⛔️ Important:</b>
+If the VP your account less than 200Steem – do not set your voice weight less than 100%! `,
+
+menuMsgPowerForFavs:
+`<b>Set power weight you need, for voting from posts for your favorites. From 0 to 100. </b>`,
+
+menuMsgPowerForCurs:
+`<b> Set power weight you need, for repeat voting after curators. From 0 to 100. </b>
+
+_{powernotice}`,
+
+menuMsgPowerForTags:
+` This voice power setting affects the voting mode "for all posts with the selected tag" which can be activated in /menu
+
+<em>assignment</em>
+You can activate the voting mode for all posts with selected tags with a small force, while votes for favorites and replays for curators are performed with a different force set in the preferences of favorites and curator
+
+<b>Set power weight you need. From 0 to 100</b>
+_{powernotice}`,
+
+menuMsgPowerForAll:
+` This setting of the voting power affects the voting mode "for all posts" which can be activated in /menu
+
+<em>asignment</em>
+You can turn on the voting mode for all posts with a small force, while the votes for the favorites and the repetitions for the curators perform with a different force set in the preferences of the favorites and curators
+
+<b>Set power weight you need. From 0 to 100</b>
+_{powernotice}`,
+
+menuMsgAskVotelimit:
+`<b>Enter the maximum number of votes you want to make</b>`,
+
+menuMsgAskWhalecalls:
+`You can set voting based on keywords in the post comment.
+To do this, send the settings in a clear format:
+
+<code>
+[
+	{"keyword":"Vote 100%", "users":"vik,robot,dimarss", "vote":100, "delay":0},
+	{"keyword":"Vote after 30 min :)", "users":"vik,robot,dimarss", "vote":100, "delay":30},
+	{"keyword":"Give alms to this homeless person!", "users":"vik,robot,dimarss", "vote":1, "delay":0}
+]
+</code>
+
+In the code above you can see 4 parameters
+
+Keywords <code>keyword</code>
+The words that the bot will respond to. It is assumed that such words will be reported by the organizers of the competitions and support programs and will be offered to curators, which will read the posts and leave a comment with the call bot to vote for the best posts.
+
+Users white list<code>users</code>
+Users login white list using comma – if they write the keyword – bot will be vote. If someone else - the bot will not respond. 
+Voice weight <code>vote</code>
+The strength of the voice for a particular keyword Сила голоса для конкретного ключевого слова. You can specify a large number of keywords and for each word their own custom settings for power, delay and white list of users.
+
+Delay <code>delay</code>
+
+<b>Enter the settings block below, observing the syntax of the code!</b> `,
+
+menuMsgAskIndFavs:
+`You can specify individual preferences for the favorites, for each author his personal delay and power settings.
+
+To do this, send the settings in a clear format:
+ 
+<em>For example:</em>
+<code>
+[
+	{"author":"vik", "vote":100, "delay":0},
+	{"author":"robot", "vote":50, "delay":10},
+	{"author":"dimarss", "vote":100, "delay":20},
+	{"author":"nefer", "vote":100, "delay":30},
+	{"author":"penis", "vote":-1, "delay":0}
+]
+</code>
+
+In the code example above, you can see 5 lines with 3 parameters
+Each of the lines describes the individual author's own parameters
+<code>author</code> User login
+<code>vote</code> voice weight . From -100 to 100 (value with a minus will be a FLAG, not a voice!)
+<code>delay</code> Delay in minutes 
+
+<b>Enter the settings block below, observing the syntax of the code!</b>
+Any quantity lines of favorites (number is limited by telegram message size) 
+After the last character <code>}</code> the comma should not be. 
+If your settings are accepted, you will see a corresponding message. If there is no reaction to the configuration code or there will be a response with an error - press the button <b>📋 Individual settings</b>, correct the errors and enter the block again!
+If you need help, contact chat @chain_cf`,
+
+menuMsgAskDelayCur:
+`⏱ Enter the quantity of minutes that must pass before repeating the voice after the curator.`,
+
+menuMsgAskDelayFav:
+`⏱ <b> Enter the quantity of minutes that must pass after the posting of your favorite before you vote</b>`,
+
+menuEntryPowerAbout:
+`💯 <b>Voice weight</b>
+
+You can set voice weight from 0 to 100.
+As much smaller voice power you will set as much more quantity you can make Чем меньшую силу голоса вы укажете, тем большее количество голосов сможете сделать. However, it should be understood that voices with a small force bring much less curatorial rewards.
+You can also change the voice power for each individual posts. Or even cancel the voice right in the bot. 
+<b> to get the maximum of curatorial rewards from your votes - we recommend to take votes or make weight to smaller if the post is spam, copy-paste, or which you like less than others </b>
+
+<b> In the current version of the bot appeared the ability to specify two weight values:</b>
+
+"For favorites" - the power of the voice with which you will vote for the posts of your favorite authors.
+"For repeat" - the power of the voice with which you will vote during the replay of votes for your curator.
+Select the appropriate option from the menu below. 👇`,
+
+menuButtonPowerForFav:'️💯 For favorites',
+menuButtonPowerForCur:'💯 For repited',
+menuButtonPowerForTag:'💯 For tags',
+menuButtonPowerForAll:'💯 For all posts',
+menuButtonPowerLimitFirst:'📉 Bottom limit',
+menuButtonPowerLimitSecnd:'📈 Upper limit',
+
+
+menuEntryOtherOpts:
+`🌡💯 In this menu, you can adjust the vote power its limits and delays for your bot.
+Limit 1 and 2 will help you keep the desired balance of power in the right range, while the "voice power" setting sets your default strength. The limit of votes sets the maximum number of votes. 
+
+More you can read directly in the menu items 👇`,
+
+menuButtonWhaleCalls:'📡 Call to actios',
+menuButtonIndFavOpts:'📋 Individual set.',
+menuButtonVoteLimit:'⌛ Number of votes',
+menuButtonAccOpts:'🔑 Acc.',
+menuEntryAcc:`<b>Tune user acc.</b>`,
+menuEntryCurators:`🚇 <b>Curators</b>
+Curators are the users behind whom you repeat your voices. If you have similar tastes with one of the users on the Steemit - add it to the list of curators and the bot will repeat the votes behind it. 
+
+It should be understood that there is no point in pointing out a big number of curators, it also makes no sense to specify curators with the same preferences. Or pointing curators who themselves vote with the help of bots, unless you want to build your own "train" chain.
+
+During the work you will see behind which curator the voice repeats. We recommend removing the curators from the list if they vote for low-quality content!
+You can also use the black list of users, then you will not repeat the voice of the curator when he votes for the user from the blacklist.
+<b>To set up the curators, use the menu below.</b>`,
+
+menuButtonCreateCurList:'🚂 New list',
+menuButtonAddOneCur:'➕ Add curator',
+menuButtonRemoveOneCur:'➖ Remove curator',
+menuButtonResetCurs:'🗑 Reset list',
+menuButtonDelayCurs:'⏰ Delay before repeat',
+
+
+menuEntryFavorites:
+`🎯 <b>Favorites</b>
+
+The list of users whose posts you will upvote automatically. 
+In the menu below you can make a list of favorites.`,
+
+menuButtonAddOneFav:'➕ Add favorite',
+menuButtonRemoveOneFav:'➖ Remove favorite',
+menuButtonImportFollow:'🔗 Followings import',
+menuButtonCreateFavList:'🎯 New list',
+menuButtonResetFavs:'🗑 Reset list',
+menuButtonDelayFavs:'⏰ Delay of a vote',
+
+noticeListTobig:'...the whole list is not placed in the report',
+
+menuMsgAskAddOneCur:
+`➕ <b>Add new curators names to your list</b>
+To do this, enter the login of the curators separated by a comma. For example:
+<code>vik,blockchained,dimarss</code>	 
+
+Current list:
+<code>_{curatorsToFollow}</code>`,
+
+menuMsgAskRemoveOneCur:
+`❌ <b>Enter the login of the curator you want to remove from the list</b>	 
+
+Current list:
+<code>_{curatorsToFollow}</code>`,
+
+menuMsgAskAddoneFav:
+`➕ <b>Add a new login of favorites to your list</b>
+
+Current list:
+<code>_{FavList} </code>
+_{cut}`,
+
+
+menuMsgAskRemoveOneFav:
+`➖ <b>Enter the logins for the favorites you want to remove from the list</b>
+
+Current list:
+<code>_{FavList} </code>
+_{cut}`,
+
+menuEntryTags:
+`🔖 <b>In this section of the menu you can specify the chosen and forbidden tags</b>
+
+Chosen tags - The bot votes for the post of the favorite only in the event that the favorite has indicated one of the tags of you specified.
+Forbidden tags - If the post of the favorite contains a tag that you banned, the bot will not vote for this post.
+
+Select the appropriate menu item below to specify chosen and forbidden tags.
+
+`,
+
+menuButtonWhiteTags:'👍🏻 Chosen',
+menuButtonBlackTags:'👎🏿 З Forbidden',
+menuButtonResetTags:'🗑 Reset tags list',
+
+menuMsgAskWhiteTags:
+`🔖 <b>Enter chosen tags</b>
+Chosen tags - The bot votes for the post of the favorite only in the event that the favorite has indicated one of the tags of you specified.
+
+Tags should be specified only in Latin, separated by commas. If you want to specify Cyrillic tags - use transliteration. For find out how the Cyrillic tag looks in the transliterated version look at the tag link.
+For example, a tag in the Russian "голос" should be entered as "ru--golos"
+
+Example of a string for entering tags:
+
+<code>steemit,blockchain,photography,ru--golos,ru--otkrytyij-kod,ru--blokcheijn,ru--fotografiya</code>`,
+
+menuMsgAskBlackTag:
+`🔖 <b>Enter forbidden tags</b>
+Forbidden tags - If the post of the favorite contains a tag that you banned, the bot will not vote for this post.
+Please note that forbidden tags work within the favorites limits, if you repeat the voice behind the curator - the ban on forbidden tags is not taken into account.
+Tags should be specified only in Latin, separated by commas. If you want to specify Cyrillic tags - use transliteration. For find out how the Cyrillic tag looks in the transliterated version look at the tag link.
+For example, a tag in the Russian "голос" should be entered as "ru--golos"
+
+Example of a string for entering tags:
+
+<code>steemit,blockchain,photography,ru--golos,ru--otkrytyij-kod,ru--blokcheijn,ru--fotografiya</code>`,
+
+menuMsgStop:
+`⏸️ You stopped the process of repeating the voices, restoring with the command 🚀 Run`,
+
+menuMsgThanks:
+`🍻 <b>As a thank you can vote for the delegates on the Golos.io: vik, robot and golos-api and check the news in the chat</b> @chain_cf and @viknews channel 
+
+To vote for witnesses, you need to go to the page
+ https://golos.io/~witnesses`,
+
+menuMsgSTATUS:
+`<b> That's what your settings look like now:</b> 
+<b>Login</b> - <code>_{login}</code>
+
+Vote for all posts: _{enableAllPostVoting}
+Vote for all posts with tags: _{enableOnlyTagVoting}
+
+<b>Delays</b>
+Favorites - <code>_{delayFAV} мин.</code>
+Curators - <code>_{delay} мин.</code>
+X period - <code> back to _{past} min.</code>
+
+<b>Power adjustments</b> 
+Voice power for repeating - <code>_{power / 100}%</code>
+Voice power for favorites - <code>_{FAVpower / 100}%</code>
+Voting for post with chosen tags - <code>_{onlyTagPower/ 100}%</code>
+Voting for all post - <code>_{allPostPower/ 100}%</code>
+
+Bottom power threshold - <code>стоп при _{powlimit}%</code>  
+Upper power threshold - <code>старт при _{newpowlim}%</code>  
+The limit of votes - <code>_{maxups}</code> голосов
+ 
+<b>Black list</b>
+<code>_{blacklist}</code> 
+
+
+ 
+<b>The bot commands</b>
+/menu - Main bot menu
+/me - Information about your account 
+/list - Lists of curators and favorites
+
+/start – Reset settings
+
+We recommend subscribing to the @viknews chanel and @chain_cf  chat.`,
+
+menuMsgSTATUSextraopts:
+`<b> Individual parameters for favorites:</b>
+<code>_{extraoptions}</code>`,
+
+menuMsgNoWtags: 
+`Chosen tags are not listed, the bot votes for the posts of favorites with any tags except for forbidden`,
+
+menuMsgNoBtags: 
+`Forbidden tags are not listed, the bot can vote for any posts of your favorites`,
+
+menuMsgSTATUStags:
+`<b>Choosed and forbidden tags</b>
+
+Choosed:
+<code>_{Wtags}</code>
+
+Forbidden:
+<code>_{Btags}</code>`,
+
+menuMsgHELP:
+` The help page will be completed later.
+Now you can ask for help in our chat
+	👉 @chain_cf`,
+
+menuMsgChat:
+`⛓ You can follow the updates of bots on the @viknews channel, as well as ask questions or leave wishes in the @chain_cf chat
+
+⛓ https://t.me/chain_cf`,
+
+menuMsgAskBlackList:
+`💩 <b>Black list</b>
+Enter the names of the users whose messages you do not want to vote for. 
+This is necessary in order to filter the preferences your curators.
+
+Tip: you can enter your own nickname - then you will not vote for yourself when the curator votes for you.
+You can also enter here service accounts, spam bots and other nicknames that host useless content.
+
+You need to enter nicknames list separated by commas without spaces 👇`,
+
+menuMsgAskOneToBlist:
+`💩 Add one or more names. 
+Multiple names should be separated by commas and without spaces!
+For example:
+1. <code>myenemy</code> - One nickname
+2. <code>terrorist,narkoman,zombie</code> - Several nicknames
+`,
+
+menuMsgAskRemoveBlist:
+`💩 Remove one or more names from the black list. 
+Multiple names should be separated by commas and without spaces!
+For example:
+1. <code>myenemy</code> - One nickname
+2. <code>terrorist,narkoman,zombie</code> - Several nicknames
+
+Hint:
+If there is an unnecessary character in your list, a space or a typo in login, you can remove it with the simple replacement principle.
+The delete button erases from the black list what you type.`,
+
+menuEntryBlackList:
+`💩 Blacklist settings
+
+You can create a new list by clicking the "Create list" button or add / remove names from the previously created ones using the appropriate buttons
+To clear the list, you can use the "⚰️ New list" button and enter "no" instead of the list` ,
+
+menuButtonCreateBlack:'️⚰ New list',
+menuButtonRemoveOneBlack:'⚰ Remove',
+menuButtonAddOneBlack:'⚰ Add',
+
+menuMsgAbouRemoveBlack:
+`💩 Remove one or more names from the black list. 
+Multiple names should be separated by commas and without spaces!
+For example:
+1. <code>myenemy</code> - One nickname
+2. <code>terrorist,narkoman,zombie</code> - Several nicknames
+Hint:
+If there is an unnecessary character in your list, a space or a typo in login, you can remove it with the simple replacement principle.
+The delete button erases from the black list what you type.`,
+
+menuMsgAboutBlackList:
+`💩 Blacklist settings
+
+You can create a new list by clicking the "Create list" button or add / remove names from the previously created ones using the appropriate buttons
+To clear the list, you can use the "⚰️ New list" button and enter "no" instead of the list`,
+
+
+msgAboutCommON:
+`The bot will ignore the curator's voice if he votes for a comment instead of a post`,
+
+msgAboutCommOFF:
+`The bot will repeat the voice behind the curator if he votes for the comment`,
+
+msgAboutPostRedON:
+`Enabled mode in which the bot ignores event editing posts`,
+
+msgCmdPostRedOFF:
+`Disable mode in which the bot ignores event editing posts`,
+
+// ... IN PROGRESS
+
+}
+
