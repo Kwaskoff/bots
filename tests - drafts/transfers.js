@@ -15,7 +15,7 @@ let isTransfer = name[1].op[0] === 'transfer'
 
 if(isTransfer){
 
-            let findmemo = true//name[1].op[1]['memo'][0] == ""
+            let findmemo = name[1].op[1]['memo'].includes("Искомое мемо")
 			if (block > 0 && findmemo){
 			
 			let from = name[1].op[1]['from']
