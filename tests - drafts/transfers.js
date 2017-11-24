@@ -7,7 +7,7 @@ let count = 0
 let transfers =[]
 const getStat = (f) => {
     
-golos.api.getAccountHistory('robot', f, l, (err, result)=> {
+golos.api.getAccountHistory('penis', f, l, (err, result)=> {
 if (err){console.log(err)}
 for (name of result){
 let block = name[1].block
@@ -48,12 +48,6 @@ if(last === f){
 		  }
 		  })
 			 
-			 l = 2000
-			 f = l
-			 accs = []
-			 count = 0
-			 accNum++
-			getStat(f)
 			
 		  
 	} 
