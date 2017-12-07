@@ -17,10 +17,7 @@ let SeekingTx = i[1].op[0] === OP
 if(SeekingTx){
 let tx = i[1].op[1]
 let time = i[1].timestamp
-let out = `${tx["new_account_name"]}
-Блок ${block} Дата ${time}
-Выплата в GBG ${tx["sbd_payout"]}. Выплата в GOLOS ${tx["steem_payout"]}. Выплата в СГ ${tx["vesting_payout"]}
-
+let out = `${tx["new_account_name"]} - Блок ${block} Дата ${time}
 `
 console.log(out)
 log.push(out)
