@@ -1,5 +1,5 @@
 const CREDITOR = "penis"
-const DIRECTION = "to" // or "to"
+const DIRECTION = "to" // or "from"
 const DEBTOR = "vagina"
 
 const golos = require('golos-js')
