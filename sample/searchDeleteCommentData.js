@@ -1,4 +1,4 @@
-const WHO = "now"
+const WHO = "penis"
 const PERMLINK = "my-post123"
 
 const golos = require('golos-js')
