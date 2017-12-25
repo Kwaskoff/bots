@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<title>История - Поиск операций в аккаунтах блокчейна GOLOS</title>
+<meta name="Description" content="Автономный, отказоустойчивый сервис для поиска, фильтрации и анализа любых событий в аккаунтах GOLOS/STEEM">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://golos.io/images/favicons/favicon.ico" />
+<link rel="canonical" href="https://golos.cf/history/">
+<style>
+a{
+    color:white;
+}
+header {
+    background: #2673d5;
+    margin: 0;
+    margin-bottom: 2%;
+    padding: 1% 0.5%;
+    box-shadow: 0 0 10px black;
+    background-size: cover;
+    overflow: hidden;
+}
+body {
+    color:white;
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 0;
+    font-size: 11pt;
+    background: #1b406f;
+}
+
+
+input {
+    border: 0;
+    width: 98%;
+    font-weight: 700;
+    background: #f1f1f1;
+    font-size: 1rem;
+    padding: 1%;
+    margin: 0.7rem 0 2rem 0;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px #d4d4d4;
+    color: #59a2ff;
+}
+p {
+    margin: 0;
+}
+code {
+    background: black;
+    color: #3fc33f;
+    display: block;
+    width: 99%;
+    padding: 0.5%;
+    border-radius: 3px;
+    margin: 1rem 0;
+    overflow: hidden;
+    word-break: break-all;
+}
+.regblock {
+    transition:all 2s ease;
+   transform: scale(1);
+    margin: 0.5% auto;
+    width: 98%;
+    max-width: 900px;
+    background: white;
+    color: #1d1d1d;
+    padding: 0.5%;
+    border-radius: 5px;
+    font-size: .8rem;
+    display: block;
+    overflow: hidden;
+    box-shadow: 0 0 20px -5px black;
+    min-height: 100%;
+    
+    
+}
+.gradient{
+    background: linear-gradient(45deg, #202020 0%,#282828 0%,#131313 100%,#6c6c6c 100%,#797979 101%);
+}
+
+pre {
+    overflow: auto;
+    background: #f1f1f1;
+    margin: 0 0 5px 0;
+    font-size: .75rem;
+    padding: 0 10px;
+    color: #000000;
+    max-height: 10rem;
+}
+section {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5rem;
+}
+button {
+    margin: 10px auto;
+    display: block;
+    background: #ff4a4a;
+    border: 0;
+    padding: 5px 30px;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 20px -5px black;
+    font-size: 1rem;
+    font-weight: 700;
+    transition:all 1s;
+    cursor: pointer;
+}
+#notice {
+    background:#1e9474;
+    padding: 2% 1%;
+    width: 96%;
+    line-height: 1.37;
+    margin: 1rem 1%;
+    border-radius: 5px;
+    color: #ffffff;
+}
+.wait button{
+   background: grey;
+}
+.wait button:before {
+    content: '⏳';
+}
+.err {
+    background: #ff4a4a;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: 15px auto;
+    font-size: .9rem;
+}
+a.menu {
+    background: #dc4747;
+    color: white;
+    text-decoration: none;
+    padding: 1px 3px;
+    border-radius: 5px;
+}
+footer {
+    background: #2673d5;
+    display: block;
+    margin-top: 50px;
+    padding: 50px;
+    height: 100%;
+    color: white;
+}
+footer a{
+color: white;
+    text-decoration: none;
+}
+
+footer ul {
+    list-style: none;
+}
+.remove {
+    display: block;
+    background: #123f63;
+    padding: 25px;
+    margin: 0 auto;
+    text-align: center;
+}
+.remove a{
+text-decoration:none
+}
+.remove a {
+    text-decoration: none;
+    color: aliceblue;
+    background: #ff4a4a;
+    padding: 2px 10px;
+    border-radius: 3px;
+}
+textarea {
+    width: 99%;
+    margin: 0.7rem 0 2rem 0;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px #d4d4d4;
+    border: 0;
+    background: #f1f1f1;
+    color: #007d00;
+    font-size: .8rem;
+    font-family: monospace;
+    padding: 0.5%;
+}
+h2 {
+    padding: 0.5%;
+}
+.log {
+    font-size: .7rem;
+    
+    word-break: break-word;
+}
+.regblock span {
+    font-size: .7rem;
+    opacity: .5;
+    transition: all 0.3s;
+    margin: 0.5rem 0;
+}
+
+.regblock:hover span{
+    opacity: 1;
+
+}
+nav a {
+    color: white;
+    text-decoration: none;
+    background: #ff4a4a;
+    margin: 15px;
+    padding: 15px;
+    font-size: .8rem;
+    width: 150px;
+    border: 2px solid #ffffff;
+    display: inline-block;
+    height: 90px;
+    overflow: hidden;
+    font-weight: 700;
+    border-radius: 10px;
+    transition: .1s all ease;
+}
+nav a:hover{
+    transform: scale(1.1);
+}
+svg {
+    height: 800px;
+    margin-top: -355px;
+    transform: rotate(90deg);
+    z-index: 300;
+    margin-bottom: -360px;
+}
+
+path, line, circle, polygon {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: offset 3s infinite linear backwards;
+}
+select {
+    display: block;
+    margin: 1rem 0;
+    width: 100%;
+    padding: 10px;
+    background: #efefef;
+    color: #686868;
+    font-size: 1rem;
+    border: 0;
+    font-weight: 700;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px #cdcdcd;
+}
+a#navlink {
+    background: #ff4d4d;
+    padding: 10px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px black;
+}
+article {
+    background: #ffffff;
+    box-shadow: 0 0 15px -6px black;
+    color: #2673d5;
+    font-size: .75rem;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 3px;
+}
+
+pre::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 5px;
+	background-color: rgb(22, 22, 22);
+}
+
+pre::-webkit-scrollbar,
+body::-webkit-scrollbar,
+textarea::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: rgb(49, 49, 49);
+}
+
+pre::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb
+{
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+@media only screen and (max-width:780px) {
+    .regblock, .out{
+        float: none;
+        width: 98%;
+        margin: 1rem auto;
+    }
+}
+@keyframes offset {
+  to {
+    stroke-dashoffset: -500;
+  }
+}
+
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    background: #f1f1f1;
+    color: #1d1d1d;
+    box-shadow: none;
+}
+#state {
+    background: #17845d;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    box-shadow: 0px 15px 25px black;
+    top: 0px;
+    z-index: 999;
+    right: 0;
+}
+h2 {
+    font-size: 1rem;
+    text-align: center;
+}
+
+
+nav#fixedNav {
+    transition: 1s all cubic-bezier(0.58, -0.3, 0.29, 1.5);
+    bottom: -100px;
+}
+nav#fixedNav.showthis {
+    bottom: 10px;
+}
+nav.nextPage {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+}
+.nextPage button {
+    float: right;
+    margin-right: 1rem;
+}
+.regblock.removethis{
+    transition: all 2s ease;
+    transform: scale(0)
+}
+button#loadmore.removethis {
+    display: none;
+}
+span.type {
+    background: green;
+    color: white;
+    font-weight: 700;
+    padding: 1px 7px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+hr {
+    background: #ececec;
+    color: #ececec;
+    border:none;
+    height: 3px;
+}
+
+label {
+    font-size: .6rem;
+}
+#loader{
+    width: 100%;
+    height: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    transition: 1s all ease;
+    background: transparent;
+    z-index: 10000
+}
+#loader.loading {
+    background: rgba(3, 40, 67, 0.62) url(/img/puff.svg) center no-repeat;
+    background-size: contain;
+    padding: 0;
+    height: 100%!important;
+}
+article.vote .type {
+    background: #347bff;
+}
+article.transfer .type {
+    background: gold;
+}
+
+article.account_update .type {
+    background: red;
+}
+
+</style>
+</head>
+<body>
+<header>
+<h1>🔎 GOLOS/STEEMIT Accounts history Explorer</h1>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+viewBox="0 0 300.5 1868.9" enable-background="new 0 0 300.5 1868.9" xml:space="preserve">
+<g>
+<path fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" d="M151.8,9.5l63.7,106.9h-38.3
+   c0,0-15.3,2.7-15.7,20.8c-0.2,12.7-1.3,456.7-1.3,456.7l-10-8.7l-10.5,8.7v-454c0,0,0.1-22.7-16.2-22.7c-16.1,0-40.7,0.2-40.7,0.2
+   L151.8,9.5z"/>
+<line fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" x1="110.1" y1="212.9" x2="110.1" y2="398.9"/>
+<line fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" x1="191.1" y1="212.9" x2="191.1" y2="398.9"/>
+<circle fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="109.5" cy="432.5" r="8"/>
+<circle fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="191.5" cy="432.5" r="8"/>
+<circle fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="109.5" cy="463.5" r="8"/>
+<circle fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="191.5" cy="463.5" r="8"/>
+<circle fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="109.5" cy="495.5" r="8"/>
+<circle fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="191.5" cy="495.5" r="8"/>
+<circle fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="109.5" cy="526.5" r="8"/>
+<circle fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" cx="191.5" cy="526.5" r="8"/>
+<polygon fill="none" stroke="#fff" stroke-width="5" stroke-miterlimit="10" points="150.1,598.5 112.8,636.2 125.1,649.2 
+   150.1,623.9 175.1,649.2 188,637.1 	"/>
+<line fill="none" stroke="#fff" stroke-width="20" stroke-miterlimit="10" x1="150.1" y1="648.9" x2="150.1" y2="704.9"/>
+<circle fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" cx="150.1" cy="754.1" r="26.3"/>
+<line fill="none" stroke="#fff" stroke-width="20" stroke-miterlimit="10" x1="113.1" y1="805.9" x2="113.1" y2="861.9"/>
+<line fill="none" stroke="#fff" stroke-width="20" stroke-miterlimit="10" x1="185.1" y1="806.9" x2="185.1" y2="862.9"/>
+<line fill="none" stroke="#fff" stroke-width="20" stroke-miterlimit="10" x1="150.1" y1="805.9" x2="150.1" y2="890.9"/>
+<line fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" x1="59.1" y1="1046.9" x2="59.1" y2="1232.9"/>
+<line fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" x1="239.1" y1="1046.9" x2="239.1" y2="1232.9"/>
+<line fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" x1="109.1" y1="1167.9" x2="109.1" y2="1353.9"/>
+<line fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" x1="190.1" y1="1167.9" x2="190.1" y2="1353.9"/>
+<polygon fill="none" stroke="#fff" stroke-width="6" stroke-miterlimit="10" points="150.3,901.9 38.1,1010.9 140.1,1010.9 
+   139.9,1048.9 94.1,1048.9 93.8,1066.9 140.1,1066.9 139.9,1096.9 94.1,1096.9 93.9,1114.9 140.1,1114.9 139.9,1406.9 7.1,1538.4 
+   19.3,1551.1 138.1,1435.9 138.1,1476.9 6.1,1608.9 17.8,1621.9 138.1,1505.9 138.1,1540.9 6.1,1669.9 17.8,1681.9 138.1,1566.9 
+   138.1,1605.9 6.1,1738.9 17.8,1750.9 138.1,1636.9 138.1,1770.9 159.1,1770.9 159.1,1634.9 274.1,1750.9 288.6,1737.9 
+   157.1,1606.9 157.1,1566.9 275.1,1683.9 290.9,1667.4 156.1,1533.4 156.1,1499.9 278.1,1620.9 291.9,1606.8 156.1,1471.3 
+   156.1,1431.9 274.1,1548.9 287.1,1535.4 156.1,1404.9 156.1,1115.9 204.1,1115.9 204.1,1097.9 160.1,1097.9 160.1,1065.9 
+   203.1,1065.9 203.1,1048.9 159.1,1048.9 159.1,1009.9 263.1,1009.9 	"/>
+<line fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" x1="121.1" y1="1844.9" x2="179.1" y2="1844.9"/>
+<line fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" x1="121.1" y1="1863.9" x2="179.1" y2="1863.9"/>
+<circle fill="none" stroke="#fff" stroke-width="10" stroke-miterlimit="10" cx="150.1" cy="1796.4" r="27.5"/>
+</g>
+</svg>
+
+        
+
+</header>
+<nav id="nav">
+    <a href="https://golos.io/ru--golos/@vik/golos-cf-history-avtonomnyi-otkazoustoichivyi-servis-dlya-poiska-filtracii-i-analiza-lyubykh-sobytii-v-akkauntakh-golos-steem">Описание в блоге @vik 🤘🏼</a>
+    <a href="https://t.me/chain_cf">📢 Нужна помощь? Обратитесь в чат - @chain_cf</a>
+    </nav> 
+<section id="step">
+    <h2>Поиск любых операций и данных в истории аккаунта</h2>
+         <div id="userinfo"></div> 
+         <div id="aside" class="out"><div id="aboveout"></div>
+          
+         <div id="out"></div>
+         
+       </div>
+    <div id="mainform" class="regblock">
+    <p>👻 Логин аккаунта для сканирования</p>
+    <input title="С маленькой буквы, без символа @" type="username" name="username" id="username">
+    <p>🔎 Поисковые запросы</p>
+    <span>Введите ключевые слова которые хотите найти в операциях. Можно использовать любые ключевые слова, в том числе наименование операций. <b>Каждое слово с новой строки</b>.</span>
+    
+    <textarea title="Каждое слово с новой строки" name="keywords" id="keywords" cols="60" rows="5"></textarea>
+    
+    <input type="checkbox" id="matchAll" name="matchAll" value="true">
+    <label for="matchAll">Нажмите здесь если в операциях должны присутствовать все указанные ключевые слова. Если не отмечено - будут показаны операции которые содержат хотя бы одно ключевое слово.</label>
+<hr>
+    <input type="checkbox" id="autoScanNext" name="autoScanNext" value="true">
+    <label for="autoScanNext">Нажмите здесь если хотите просканировать весь объем истории аккаунта. Для аккаунтов с большой активностью это требует нескольких минут. Скорость выполнения зависит от мощности вашего компьютера</label>
+<hr>
+
+    <select title="Фильтр по определенным операциям" id="opType">
+            <option selected="selected" value="ALL">Любые типы операций</option>
+            <option value="transfer">Трансферы монет</option>
+            <option value="comment">Посты и комментарии</option>
+            <option value="vote">Апвоты/Флаги/Отмены</option>
+            <option value="account_update">Обновление аккаунта</option>
+            <option value="custom_json">Фолловинги/Реблоги/Custom</option>
+            <option value="delete_comment">Удаление комментариев</option>
+            <option value="account_witness_vote">Голоса за делегатов</option>
+            <option value="account_create">Создание аккаунта</option>
+            <option value="transfer_to_vesting">Перевод в силу голоса</option>
+            <option value="withdraw_vesting">Вывод из силы голоса - запрос</option>
+            <option value="fill_vesting_withdraw">Вывод из СГ - зачисление</option>
+            <option value="limit_order_create">Создание ордера</option>
+            <option value="limit_order_create2">limit_order_create2</option>
+            <option value="limit_order_cancel">Отмена ордера</option>
+            <option value="fill_order">Ордер сыграл</option>
+            <option value="feed_publish">Прайсфид</option>
+            <option value="convert">Запрос конвертации</option>
+            <option value="witness_update">Обновление ноды</option>
+            <option value="account_witness_proxy">Проксирование</option>
+            <option value="pow">Майнинг</option>
+            <option value="pow2">Майнинг pow2</option>
+            <option value="custom">custom</option>
+            <option value="comment_options">Опции комментария</option>
+            <option value="set_withdraw_vesting_route">Переадресация СГ</option>
+            <option value="challenge_authority">Проверка авторизации</option>
+            <option value="prove_authority">Доказательство авторизации</option>
+            <option value="request_account_recovery">Запрос на восстановление</option>
+            <option value="recover_account">Восстановление аккаунта</option>
+            <option value="change_recovery_account">Смена рекавери</option>
+            <option value="escrow_transfer">Трансфер гаранту</option>
+            <option value="escrow_dispute">Диспут Escrow</option>
+            <option value="escrow_release">Релиз Escrow</option>
+            <option value="escrow_approve">Одобрение Гаранта</option>
+            <option value="transfer_to_savings">Перевод в сейф</option>
+            <option value="transfer_from_savings">Вывод из сейфа</option>
+            <option value="cancel_transfer_from_savings">Отмена вывода из сейфа</option>
+            <option value="custom_binary">Публикация бинарных данных</option>
+            <option value="decline_voting_rights">Запрет голосования</option>
+            <option value="reset_account">Сброс аккаунта</option>
+            <option value="set_reset_account">Права на брос</option>
+            <option value="fill_convert_request">Успешная Конвертация</option>
+            <option value="author_reward">Авторские награды</option>
+            <option value="curation_reward">Кураторские награды</option>
+            <option value="comment_reward">Награды за комментарий</option>
+            <option value="comment_payout_update">Выплата за пост - обновление</option>
+            <option value="liquidity_reward">Бонус за ликвидность</option>
+            <option value="shutdown_witness">Деактивация ноды (автоматически)</option>
+            <option value="fill_transfer_from_savings">Вывод из сейфа - зачисление</option>
+            <option value="hardfork">Принятие хардфорка</option>
+           
+
+
+    </select>
+
+    <select title="Выбор ноды для доступа к блокчейну" id="publicNode">
+        <option selected="selected" value="wss://api.golos.cf">Подключение через ноду @vik</option>
+        <option value="wss://ws.golos.io">wss://ws.golos.io</option>
+        <option value="steemit">Блокчейн Steemit</option>
+    </select>
+
+    <button onclick="historyScan(0)" class="runSearch">🔎ПОИСК</button>
+    </div>
+        
+            
+             
+    </section>
+
+    
+  
+
+     
+ <footer id="footer">
+     <div id="state"></div>
+     <nav id="fixedNav" class="nextPage"><button id="loadmore" title="Загрузить более ранние операции" onclick="historyScan(1)">Раньше</button> <button title="Перезагрузка страницы для работы с новым аккаунтом" onclick="Reload()">Новый аккаунт</button></nav>
+        <ul>
+                <li><a href="https://golos.cf/multisig/">📌 Управление мультисигом</a></li>
+                <li><a href="https://wiki.golos.io/2-rewards/delegatstvo.html">📌 О делегатстве на wiki.golos.io</a></li>
+                <li><a href="https://golos.io/~witnesses">📌 Голосование за делегатов golos.io/~witnesses</a> </li>
+                <li><a href="https://goldvoice.club/witnesses/">📌 Голосование за делегатов goldvoice.club/witnesses</a></li>
+                <li><a href="https://golos.cf/reg.html">📌 Регистрация на голосе без смс верификации</a></li>
+                <li><a href="https://golos.cf/steem">📌 Регистрация на steemit без смс верификации</a></li>
+                <li><a href="https://golos.cf/proxy">📌 Проксирование голосования за делегатов</a></li>
+                <li><a href="https://golos.cf">📌 Нода wss://api.golos.cf</a></li>
+                <li><a href="https://golos.io/@vik">📌 Блог @vik</a></li>
+        </ul>
+        <div id="loader"></div>
+</footer>
+<script src="https://cdn.steemjs.com/lib/latest/steem.min.js"></script>
+<script>
+var nextFrom=-1,nextLimit=1000,total,aboveoutFrom,count,firstscan = true,done;    
+var historyScan = function(nextPage){
+
+var username = document.getElementById("username").value,
+ keywords = document.getElementById("keywords").value.split('\n'),
+ matchAll = document.getElementById("matchAll").checked,
+ autoScanNext = document.getElementById("autoScanNext").checked,
+ operationType = document.getElementById('opType'),
+ opType = operationType.options[operationType.selectedIndex].value, 
+ publicNode = document.getElementById('publicNode'),
+ wss = publicNode.options[publicNode.selectedIndex].value;
+
+if(wss !== "steemit"){
+steem.config.set('websocket',wss);
+steem.config.set('address_prefix','GLS');
+steem.config.set('chain_id','782a3039b478c839e4cb0c941ff4eaeb7df40bdd68bd441afd444b9da763de12');
+}
+
+var contains = function(target, pattern){
+    var value = 0;
+    pattern.forEach(function(word){
+      value = value + target.includes(word);
+      
+    });
+
+if(matchAll) return (value === keywords.length);
+return (value === 1);
+}
+
+if(!nextPage){ 
+    document.getElementById("mainform").classList.add("removethis");
+    document.getElementById("fixedNav").classList.add("showthis");
+}
+if(autoScanNext){
+    document.getElementById("loader").classList.add("loading");
+}
+var getAccountHistory = function(FROM,LIMIT){
+steem.api.getAccountHistory(username, FROM, LIMIT,function (err, result) {
+        if (err) return alert(JSON.stringify(err))
+        //console.log(result)
+        
+        nextFrom = result[0][0]-1;
+        
+        if(firstscan) {
+            total = result[result.length-1][0];
+            firstscan = false;
+            if(!autoScanNext && total > 1001){
+                console.log(total)
+                document.getElementById('userinfo').innerHTML = "<code>Сканирование аккаунта "+username+", всего операций в истории аккаунта: "+total+". Показаны 1000 недавних. Нажмите РАНЬШЕ для загрузки прошлых операций</code>"
+            }
+            
+        }
+        
+        for (var i = 0; i < result.length; i++) {
+            
+            var x = result[i];
+            var block = x[1].block;
+            var time = x[1].timestamp;
+            var trxid = x[1].trx_id;
+            var requiredType =(opType === "ALL")?true:x[1].op[0] === opType;
+           
+            if (requiredType) {
+            var RAW = JSON.stringify(x[1].op, null, 4);
+            var match = contains(RAW, keywords);
+            if(match){
+                count++
+                //console.log(count,block,time,trxid,RAW);
+                
+                document.getElementById('out').insertAdjacentHTML("afterbegin","<article class='"+x[1].op[0]+"'><span class='type'>"+x[1].op[0]+"</span> 📦 "+block+" ⏱ "+time+" GMT 0 📋<a href='http://golosd.com/tx/"+trxid+"'>"+trxid+"</a></br> <pre><xmp>"+RAW+"</xmp></pre></article>")
+                
+            }
+            }
+            
+        }
+
+        nextLimit = (nextFrom>1e3)?1e3:nextFrom;
+        if(nextFrom<0){
+            document.getElementById("state").innerHTML = "<h3>✔️ История "+username+" просканирована полностью</h3>"
+            if(autoScanNext)document.getElementById("loader").classList.remove("loading");
+            document.getElementById("loadmore").classList.add("removethis");
+            done = true
+        }else if(autoScanNext){
+            getAccountHistory(nextFrom,nextLimit);
+        }
+        
+        aboveoutFrom = nextFrom-nextLimit
+        console.log(nextFrom,nextLimit)
+       
+          
+        });
+}
+
+if(nextPage){
+    document.getElementById('aboveout').innerHTML = "<code>Показаны операции с "+aboveoutFrom+" по "+nextFrom+"</code>";
+    document.getElementById('out').innerHTML = "Загрузка "+nextLimit+" операций...";
+    }
+getAccountHistory(nextFrom,nextLimit);
+
+
+
+};
+var Reload = function(){
+return location.reload();
+}
+</script>
+</body>
+</html>
