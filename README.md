@@ -1,26 +1,27 @@
-# 📡 Список телеграм ботов для голоса:
+# 📡 Список телеграм ботов для голоса
+
+![ДЕГРАДАНТ](https://gateway.ipfs.io/ipfs/QmeQ3w9RSUkA2uaPNzC15kU3amh5cD1dU1P5FUpn3X9WRH)
+
+#### 💯 Для автоматического голосования:
+
+**[golosrobot](https://t.me/golosrobot ) [upvoterbot](https://t.me/upvoterbot) [upvote100bot ](https://t.me/upvote100bot) [upvbot](https://t.me/upvbot) [uppbot](https://t.me/uppbot) [up2bot](https://t.me/up2bot) [xvotebot](https://t.me/xvotebot) [votexbot](https://t.me/votexbot) [solocuratorbot](https://t.me/solocuratorbot) [strecozabot](https://t.me/strecozabot) [autoupvotebot](https://t.me/autoupvotebot) [mapvotebot](https://t.me/mapvotebot) [g0fuckbot](https://t.me/g0fuckbot) [upvotemebot](https://t.me/upvotemebot) [hottabot](https://t.me/hottabot) [goldvoicebot](https://t.me/goldvoicebot) [topocbot](https://t.me/topocbot ) [betarobot](https://t.me/betarobot)**
+
+**Steemit версии**
+[@steemrobot](https://t.me/steemrobot)
+[@steem_robot](https://t.me/steem_robot)  
+[@steemzbot](https://t.me/steemzbot)
+[@steemxbot](https://t.me/steemxbot)
+
+**Все вышеперечисленные боты идентичны друг другу по функционалу, а их количество обусловленно вашим желанием использовать несколько аккаунтов.**
+#### Полезные боты
+[WitnessMonitor](https://t.me/WitnessMonitor) - пропущенные блоки делегатов, уведомления через mention
+https://t.me/goloschain - лента постов
+https://t.me/degraderbot - Деградант и помощник, бот добавленный во многие группы, с большим списком скрытых команд для удобства пользователей. [Подробнее в отдельной статье.](https://golos.io/ru--boty/@vik/degradant-ili-pomoshchnik-gid-po-komandam-bota-dlya-golosa-v-chate-tmechain-cf-11-29)
+
+#### [@golos_robot](https://t.me/golos_robot)
+Мой последний бот. Предназначен для кросспостинга, в том числе отложенного в чейны голоса и steemit. Подробнее в посте [**🔥 Новый бот для быстрого или отложенного размещения постов сразу в несколько блокчейнов + IPFS + имитация приложений**](https://golos.io/ru--golos/@vik/instrukcii-k-golosrobot-reaktivnyi-sposob-razmeshat-v-golos-steemit-decentralizovannye-media-foto-audiozapisi-videosoobsheniya)
 
 
-Для голосования и размещения постов на Golos.io:
-
-* [BetaRobot](https://t.me/betarobot) (Новейшие функции появляются сначала в BetaRobot, затем в остальных после тестирования)
-* [GolosRobot](https://t.me/golosrobot)
-* [UpvoterBot](https://t.me/upvoterbot)
-* [Upvote100bot](https://t.me/upvote100bot) 
-* [UpvotemeBot](https://t.me/upvotemebot)
-* [AutoUpvoteBot](https://t.me/autoupvotebot)
-* [Hottabot](https://t.me/hottabot)
-* [UpvBot](https://t.me/upvbot)
-* [UppBot](https://t.me/uppbot)
-* [Up2Bot](https://t.me/up2bot)
-* [VotexBot](https://t.me/votexbot)
-* [XvoteBot](https://t.me/xvotebot)
-* [G0fuckBot](https://t.me/g0fuckbot)
-* [SoloCuratorBot](https://t.me/solocuratorbot) 
-* [MapvoteBot](https://t.me/mapvotebot)
-* [TopocBot](https://t.me/topocbot)
-* [StrecozaBot](https://t.me/strecozabot)
-* [GoldvoiceBot](https://t.me/goldvoicebot)
 
 
 ### [Ход работы](https://github.com/vikxx/bots/projects/1)
@@ -30,11 +31,7 @@
 ### [Блог](https://golos.io/@vik)
 
 
-### Новые опции
-Теперь команда `/menu` не только открывает главную страницу меню, но еще выводит дополнительные переключатели 
-![](https://images.golos.io/DQmeq7QCLFj4KFc9oudoBw3nHe6UEmWKL8XXZHzjnCPYrgc/image.png)
 
-Ввод остальных настроек теперь не требует перезапуска, они принимаются "на лету"
 
 
 #### Режим голосования за ВСЕ публикуемые посты
@@ -137,35 +134,13 @@ Cписок разрешенных пользователей users
 
 ***
 
-## TODO
-* 🔬 Добавить возможность исключения учета комментариев при повторах за кураторами 
-* 🔬 Добавить возможность голосования за репосты фаворита на равне с постами 
-* 🔬 Добавить анализ активности подписчиков в folloyaltybot
-* 🔬 Исключить заблокированных в folloyaltybot 
-* 🔬 Сделать конструктор массива настроек для импорта/експорта в виде JSON файла (реализовано частично)
-* 🔬 Добавить возможность отмены голоса по сигналу сообщества в чате chain_cf
-* 💊 Добавить проверку позиции вложенного комментария. Сообщать если нет возможности комментировать пост
-* 🔬 Ежедневно обнулять лимит голосов
-* 💊 FIX Научить отличать действие первой публикации поста от редактирования
-* 💊 FIX Исключить уведомление об ответе, если автор поста === автор комментария
 
 
 
 
 
 
-## Для голосования на Steemit.com
 
-* [SteemRobot](https://t.me/steemrobot) 
-* [SteemXbot](https://t.me/steemxbot)
-* [SteemZbot](https://t.me/Steemzbot)
-
-
-#### Чат-Лента постов с возможность ручного голосования в чате:
-https://t.me/goloschain
-
-#### Чат-Мониторинг пропущенных блоков делегатов
-https://t.me/WitnessMonitor
 
 #### Бот для чтения ленты мапалы:
 https://t.me/mapalabot old
@@ -176,3 +151,18 @@ https://t.me/septcurbot
 
 #### Кошелек для массовых выплат бонусов подписчикам
 https://t.me/folloyaltybot
+
+## Ссылки на мои сервисы
+
+[📌 Чат для вопросов и поддержки моих ботов, сервисов или голоса в целом](https://t.me/chain_cf)
+[📌 Канал с обновлениями и важными сообщениями для ботоводов](https://t.me/viknews)
+[📌 Чат для получения апвотов от моих аккаунтов](https://golos.io/ru--golos/@degradant/2018-1-22t19-56-23)
+[📌 Пример поста размещенного через бот golos_robot](https://golos.io/ru--golos/@degradant/2018-1-23t15-48-00)
+[📌 Инструмент для поиска операций связанных с аккаунтом](https://golos.io/ru--golos/@vik/obnovlenie-golos-cf-history-novye-vozmozhnosti-dlya-poiska-i-analiza-istorii-akkauntov)
+[📌 Мультисиги для голоса. Мультиподписные кошельки, владельцы или авторы](https://golos.io/ru--golos/@vik/multisigi-na-golose-12-09)
+[📌 Создание аккаунтов на GOLOS/STEEMIT без смс верификации](https://golos.io/ru--golos/@vik/mgnovennaya-registraciya-akkauntov-na-golos-i-steem-bez-verifikacii-i-ogranichenii)
+[📌 Большой список ботов для автоголосования в медиаблокчейнах](https://golos.io/ru--golos/@vik/obnovlenie-botov-uchteno-mnozhestvo-pozhelanii-dobavleny-novye-opcii-golosovaniya-nachalo-razrabotki-yazykovykh-paketov-ru-en-sn)
+[📌 Социальный бот - Деградант](https://golos.io/ru--boty/@vik/degradant-ili-pomoshchnik-gid-po-komandam-bota-dlya-golosa-v-chate-tmechain-cf-11-29)
+[📌 Паблик нода api.golos.cf](https://golos.io/ru--golos/@vik/publichnyi-api-dlya-golosa-dopolnitelnye-nody-i-nastroika-nginx-upstream-load-balancer-balansirovka-nagruzki)
+[📌 Постинг через telegra.ph и продвижение постов на steemit среди пользователей ботов](https://golos.io/ru--golos/@vik/socialnoe-vzaimodejstvie---avtomaticheskoe-prodvizhenie-vashego-posta-sredi-polzovatelej-botov-11-12)
+[ 📌 Новый чат для простого способа получить голоса от моих аккаунтов](https://t.me/cryptoporn)
