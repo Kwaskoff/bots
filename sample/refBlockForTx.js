@@ -1,5 +1,6 @@
 const golos = require("golos-js")
 
+// Ugly way:
 golos.api.getDynamicGlobalProperties((err, result) => {
 
     const BlockNum = (result.last_irreversible_block_num - 1) & 0xFFFF;
@@ -12,3 +13,8 @@ golos.api.getDynamicGlobalProperties((err, result) => {
         console.log(BlockPrefix);
     });
 });
+
+// Better & simple way:
+
+BlockNum = 0
+BlockPrefix = 0
