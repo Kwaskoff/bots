@@ -1,5 +1,5 @@
 const golos = require("golos-js");
-golos.config.set('websocket','ws://localhost:9090');
+golos.config.set('websocket','wss://ws17.golos.io');
 require('events').EventEmitter.prototype._maxListeners = 9e7;
 const GolosBots = [
 ["vikx",["5*************","5**************8"]],
@@ -15,6 +15,7 @@ let wif = qx[1][1]
 setTimeout(() =>{
 	golos.broadcast.vote(xkey, xvoter, author, permlink, 1e4, (err, result) => {
 			  if(err) return console.log(err)
+		console.log(xvoter,' проголосовал')
 			});
        
 	
