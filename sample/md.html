@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>Golos POST</title>
+<style>
+body{margin: 0;padding: 0}
+#map{width:100%;height:300px}#mapCanvas{width:100%;height:400px}input#postingkey{display:block;width:100%}input{margin:5px 0}p.help{background:#f9f9f9;color:#868686;padding:5px;border-radius:3px}.drdrop{padding:10px 0;border-radius:5px}body{font-family:Arial,Helvetica,sans-serif;color:grey}
+#text-editor, input {
+    background: #f7f7f7;
+    border: 0;
+    box-shadow: inset 0 0 10px -5px #000;
+    color: #000;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+
+#addimg.loading.hasload {
+    background: #36c77f;
+    height: auto;
+    border: none;
+}
+
+#addimg.loading {
+    background: #ffffff url(https://s3.postimg.org/ejg32n7er/loading.gif) left no-repeat;
+    transition: 2s all ease;
+    height: 50px;
+    background-size: contain;
+    border: 1px solid;
+    position: relative;
+}
+#addimg.loading:after {
+    content: 'Загрузка...';
+    color: darkgrey;
+    position: absolute;
+    left: 45px;
+}
+
+#addimg.loading.hasload:after {
+    content: '';
+}
+
+.drdrop span{background:#7aa8ff;border:0;padding:10px;color:#fff;border-radius:3px;box-shadow:0 0 16px -7px #000;cursor:pointer}#text-editor img{max-width:100%;height:auto}#text-editor{background:#f7f7f7;min-height:200px;border-radius:5px;padding:1px 10px}.golos-form{padding:5%}
+#alerts {
+    color: #ff5e5e;
+    font-size: 18px;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+
+
+input#post-golos-title {
+    font-size: 1.6rem;
+    font-weight: 100;
+    width: 98%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0 1%;
+    border-radius: 0;
+    margin: 0 0 15px 0;
+}
+input:focus { 
+    outline: none !important;
+    border-color:transparent;
+    box-shadow: inset 0 0 15px -5px black;
+	transition:1s all;
+}
+
+input#loadinp {
+	position: absolute;
+}
+header {
+    background: #7aa8ff;
+    color: white;
+    padding: 15px;
+    font-size: 9pt;
+	
+}
+footer#footer {
+    background: #2a2a2a;
+    color: white;
+    padding: 15px;
+}
+footer#footer a{
+    text-decoration: none;
+    color: white;
+}
+footer#footer ul{
+	list-style: none;
+}
+textarea#benics {
+    width: 100%!important;
+    display: block;
+}
+input#Allinpower,input#declinePayout { 
+    width: 20px;
+    padding: 0;
+    margin: 20px 0;
+    box-shadow: none;
+    display: inline;
+}
+#extend{display: none;
+    background: #fafafa;
+    padding: 15px;
+	font-size: 9pt;
+    border-radius: 5px;
+    margin: 10px auto;
+    overflow: hidden;
+}
+#extend code {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    background: #222222;
+    color: #40dc46;
+    border-radius: 3px;
+}
+input#golosnode {
+    font-size: 10pt;
+}
+.openExt {
+    display: block;
+    text-align: center;
+    font-size: 9pt;
+    background: #fafafa;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+}
+img{
+    max-width: 100%!important;
+    height: auto;
+}
+input#benevik {
+    float: left;
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+.golos-form .mce-panel{border-radius:3px;margin:10px auto}.golos-form input[type=submit]{cursor:pointer;background:#248eff;border:0;display:block;margin:20px auto;padding:10px;width:160px;border-radius:3px;color:#fff;box-shadow:0 0 10px -5px #000}
+
+input#username, input#postingkey {
+  width: 400px;
+  max-width: 100%!important;
+    display: inline;
+    border: none;
+    background: #fafafa;
+    font-size: 9pt;
+    box-shadow: none;
+}
+input#postingkey {
+    float: right;
+}
+aside {
+    background: #18264e;
+    width: 270px;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    box-shadow: 0 0 10px -2px #3c3c3c;
+    overflow: auto;
+}
+aside a {
+    text-decoration: none;
+    color: white;
+}
+aside ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 9pt;
+}
+aside ul li {
+    border-bottom: 1px solid #253562;
+    padding: 10px 0;
+}
+.golos-form {
+    padding: 15px;
+    
+}
+header,footer,.golos-form{
+    margin-left: 300px;
+}
+p.benevik {
+    background: #3cc0ad;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 10pt;
+    font-weight: 700;
+}
+aside nav ul li span {
+    color: white;
+    cursor: pointer;
+}
+.postedit {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    background: #131924f7;
+    width: 100%;
+
+    height: 100vh;
+}
+
+.postedit button {
+    background: #2f9eff;
+    color: white;
+    border: 0;
+    padding: 6.5px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 5px;
+    width: 18%;
+}
+.postedit-wrap {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    color: white;
+}
+.postedit h4 {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 200;
+    margin-top: 100px;
+}
+input#postediturl {
+    font-size: 10pt;
+    margin: 0 auto;
+    display: inline;
+    width: 80%;
+    background: white;
+}
+.postedit .fa-close {
+    color: red;
+    float: right;
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+@media only screen and (max-width:780px) {
+    input#username, input#postingkey {
+    width: 100%;
+    display: block;
+    float: none;
+    font-size: 1rem;
+}
+
+input#postediturl,
+.postedit button {
+    width: 100%;
+    margin-top: 10px;
+}
+header, footer, .golos-form {
+    margin: 0;
+}
+aside {
+    background: #2a2a2a;
+    padding: 15px;
+    top: 0;
+    left: 0;
+    height: auto;
+    box-shadow: 0 0 10px -2px #3c3c3c;
+    overflow: auto;
+    position: relative;
+    width: auto;
+}
+
+}
+</style>
+<meta name="Description" content="Мультиплатформенная публикация постов в голос + встроенный фотохостинг">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="icon" type="image/x-icon" href="https://golos.io/images/favicons/favicon.ico"/>
+<script src="https://unpkg.com/golos-js@0.6.3/dist/golos.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+<style>iframe#chat {
+		width: 95%;
+		display: block;
+		min-height: 270px;
+		margin: 8px auto;
+		border-radius: 3px;
+		overflow: hidden;
+		box-shadow: 0 0 12px -2px black;
+		border: 0;
+	}</style>
+</head>
+<body>
+<header> <h2>Постинг в блокчейн голоса</h2>
+	<p>С помощью данной страницы вы можете записать в блокчейн голоса свой пост. В редактор встроен фотохостинг. Вы можете сохранить исходный код данной страницы
+	на свой пк/телефон и использовать локально.</p>
+	<strong>Поддерживается неограниченное число тегов и подмена имени приложения</strong>
+	<div id="credits">
+			Автор <a href="https://golos.io/@vik">@vik</a>.  Обратная связь - чат <a href="https://t.me/chain_cf">@chain_cf</a>
+			 
+            </div></header>
+
+<section class="golos-form">
+
+
+<form id="post-golos-form" enctype="multipart/form-data">
+<input type="text" name="post-golos-title" id="post-golos-title" required aria-required="true" autocomplete="title" placeholder="Заголовок...">
+<textarea id="text-editor" class="editable"></textarea> 
+<div class="drdrop"><span id="addimg" onclick="document.querySelector('#loadinp').click()">Загрузить фото</span></div><input id="loadinp" style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
+
+
+
+<p> <input type="text" id="tags" name="tags" placeholder="теги"></p>
+
+<p class="benevik"><input type="checkbox" id="benevik" name="benevik" value="on" checked>
+<label for="benevik">💯 Установить vik и netfriend в бенефициары. Это даст 100% upvote при публикации. Бенефактор 10%+10%</label></p>
+<div class="openExt">
+		
+<strong>Расширенные опции - нажмите тут чтобы настроить режим выплаты и бенефициаров <i class="fa fa-caret-down"></i></strong></div> 
+<div id="extend">
+        <p>
+                При желании вы можете задать permlink поста. Это не обязательно.</br>
+                Важно! Permlink должен быть уникальным для вашего блога, если ввести существующий - произойдет не создание поста, а редактирование прежнего поста с таким permlink.	
+                <input type="text" id="permlink" name="permlink" placeholder="permlink / короткая ссылка" pattern="[a-z0-9-]+"/></p>
+                <p> 
+                Имя приложения. Вы можете ввести любое имя приложения и имитировать постинг через golos.io, goldvoice, steepshot и т.д.	
+                <input type="text" id="appname" autocomplete="appname" name="appname" placeholder="Имя приложения для подмены"></p>	
+                <hr>
+                       
+                <p>Бенефициары.</p>
+                Пример ввода настройки. Вес указывается из расчета 100% = 10000, 50% = 5000, 10% = 1000 и т.д.
+                <code>[ {"account": "vik","weight": 1000} , {"account": "netfriend","weight": 1000 } ]</code>
+                <b>Вы можете рассчитывать на апвот от @vik если используете шаблон выше. Подробнее в <a target="_blank" href="https://t.me/cryptoporn">чате поддержки</a></b>
+                <textarea id="benics"></textarea>
+                
+                <input type="checkbox" id="Allinpower" name="Allinpower" value="off">
+                <label for="Allinpower">100% в СГ</label>
+                
+                <input type="checkbox" id="declinePayout" name="declinePayout" value="off">
+                <label for="declinePayout">Отказаться от выплат</label>
+</div>
+
+<div class="auth">
+<input type="username" autocomplete="username" id="username" name="username" required aria-required="true" placeholder="Логин">
+		<input type="password" autocomplete="current-password" role="password" id="postingkey" name="postingkey" required aria-required="true" title="Никому не сообщайте свой ключ!" placeholder="Постинг ключ"/>
+	</div>
+<input type="submit" value="Отправить">
+</form>
+<div id="alerts"></div>
+
+<div class="postedit">
+        <i class="fa fa-close"></i>
+<div class="postedit-wrap">
+    
+    <h4>Введите ссылку на пост который хотите отредактировать и нажмите "загрузить в редактор"</h4>
+    <code>Пример ссылки golos.io/tag/@vik/md</code>
+    <input type="text" id="postediturl" name="postedit" placeholder="Ссылка на пост для редактирования">
+    <button id="load4edit">Загрузить в редактор</button>
+
+</div>
+</div>
+</section>
+<aside>
+<nav>
+<ul>
+        <li><span id="editpost"><i class="fa fa-code"></i>  Редактировать посты</span></li>
+        <li><a href="https://t.me/chain_cf">📌 Тех.поддержка</a></li>
+        <li><a href="https://t.me/viknews">📌 Новости</a></li>    
+        <li><a href="https://golos.io/@vik">📌 Блог @vik</a></li>
+		<li><a href="https://golos.cf/multisig/">📌 Управление мультисиг</a></li>
+	
+    	<li><a href="https://golos.cf/reg">📌 Аккаунт на голосе без смс</a></li>
+		<li><a href="https://golos.cf/steem">📌 Аккаунт на steemit без смс</a></li>
+		<li><a href="https://golos.cf/proxy">📌 Проксирование witness vote</a></li>
+		
+</ul>
+</nav>
+
+<input title="Укажите адрес ноды через которую хотите размещать пост" type="text" id="golosnode" name="golosnode" placeholder="wss://api.golos.cf">
+</aside>
+
+
+
+	 
+<footer id="footer">
+    <iframe id="chat" src="https://chain.chatbro.com" sandbox="allow-forms allow-scripts allow-same-origin"></iframe>
+		</footer>
+<script>
+
+var tryAgain = "Ошибка чтения данных с ноды, повторите еще раз!";
+var FixParentPermForEdit = false;
+var assoc = {
+    "а": "a",
+    "б": "b",
+    "в": "v",
+    "ґ": "g",
+    "г": "g",
+    "д": "d",
+    "е": "e",
+    "ё": "yo",
+    "є": "ye",
+    "ж": "zh",
+    "з": "z",
+    "и": "i",
+    "і": "i",
+    "ї": "yi",
+    "й": "ij",
+    "к": "k",
+    "л": "l",
+    "м": "m",
+    "н": "n",
+    "о": "o",
+    "п": "p",
+    "р": "r",
+    "с": "s",
+    "т": "t",
+    "у": "u",
+    "ф": "f",
+    "x": "kh",
+    "ц": "cz",
+    "ч": "ch",
+    "ш": "sh",
+    "щ": "shch",
+    "ъ": "xx",
+    "ы": "y",
+    "ь": "x",
+    "э": "ye",
+    "ю": "yu",
+    "я": "ya"
+}
+
+
+function transform(str, spaceReplacement) {
+    if (!str) {
+        return "";
+    }
+    var new_str = '';
+    var ru = '';
+    for (var i = 0; i < str.length; i++) {
+        var strLowerCase = str[i].toLowerCase();
+
+        if (strLowerCase === " " && spaceReplacement) {
+            new_str += spaceReplacement;
+
+            continue;
+        }
+
+        if (!assoc[strLowerCase]) {
+            new_str += strLowerCase;
+        } else {
+            new_str += assoc[strLowerCase];
+            // Если в теге найдены русские символы - стало быть нам нужно добавить префикс ru-- для публикации на голосе
+            ru = 'ru--';
+        }
+    }
+    return ru + new_str;
+}
+
+var MD = new SimpleMDE({
+
+    autofocus: true,
+    autosave: {
+        enabled: true,
+        uniqueId: "MyUniqueID",
+        delay: 1000,
+    },
+    blockStyles: {
+        bold: "**",
+        italic: "*"
+    },
+    element: document.getElementById("text-editor"),
+    forceSync: true,
+    spellChecker: false,
+    indentWithTabs: true,
+    insertTexts: {
+        horizontalRule: ["", "\n\n-----\n\n"],
+        image: ["![](http://", ")"],
+        link: ["[", "](http://)"],
+        table: ["", "\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n"],
+    },
+
+    parsingConfig: {
+        allowAtxHeaderWithoutSpace: true,
+        strikethrough: false,
+        underscoresBreakWords: true,
+    },
+    placeholder: "Пишите тут...",
+
+    promptURLs: true,
+    renderingConfig: {
+        singleLineBreaks: false,
+        codeSyntaxHighlighting: true,
+    },
+
+    showIcons: ["code", "table"],
+    status: ["autosave", "lines", "words", "cursor", {
+        className: "keystrokes",
+        defaultValue: function(el) {
+            this.keystrokes = 0;
+            el.innerHTML = "0 Нажатий";
+        },
+        onUpdate: function(el) {
+            el.innerHTML = ++this.keystrokes + " Нажатий";
+        }
+    }], // Another optional usage, with a custom status bar item that counts keystrokes
+    styleSelectedText: true,
+    tabSize: 4,
+    toolbar: true,
+    toolbar: ["side-by-side", "preview", "bold", "italic", "|", "heading", "heading-1", "heading-2", "heading-3", "|", "quote", "code", "unordered-list", "table", "horizontal-rule", "guide"],
+    toolbarTips: true,
+
+});
+jQuery(document).ready(function($) {
+    $(".openExt").click(function() {
+        $('#extend').fadeIn()
+    });
+    
+
+    $(".postedit .fa-close").click(function() {
+        $('.postedit').fadeOut();
+    });
+
+    $("#editpost").click(function() {
+        $('.postedit').fadeIn();
+    });
+    $("#load4edit").click(function() {
+
+        golos.config.set('websocket','wss://ws.golos.io');  
+        var editUrl = document.getElementById("postediturl").value.toLowerCase();
+        if(!editUrl)return alert('Введите ссылку!');
+        var urlPrepare = editUrl.split("@");
+         urlPrepare = urlPrepare[1].split("/")
+        var Permlink = urlPrepare[1].replace('/','').replace(/ /g,'');
+        var Author = urlPrepare[0].replace(/ /g,'');
+        if(!Author||!Permlink)return alert('Ссылка не действительна!')
+        
+        golos.api.getContent(Author, Permlink, function(err, result) {
+            if(err)return alert('Не найден пост ',Author, Permlink);
+        console.log(result);
+
+        var jmeta = JSON.parse(result.json_metadata);
+       
+        $('#post-golos-title').val(result.title);
+        $('#tags').val(jmeta.tags.join(' '));
+        $('#appname').val(jmeta.app);
+        $('#permlink').val(result.permlink);
+        $('#username').val(result.author);
+        FixParentPermForEdit = jmeta.tags[0];
+        MD.value(result.body);
+        $('#permlink').fadeOut();
+        $('.postedit').fadeOut();
+
+        });
+
+    });
+
+
+
+});
+
+var featuredImage = [];
+window.ondragover = function(e) {
+    e.preventDefault()
+}
+window.ondrop = function(e) {
+    e.preventDefault();
+    upload(e.dataTransfer.files[0]);
+}
+
+function upload(file) {
+    if (!file || !file.type.match(/image.*/)) return;
+    document.getElementById("addimg").classList.add('loading');
+    var fd = new FormData();
+    fd.append("image", file);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "https://api.imgur.com/3/image.json");
+    xhr.onload = function() {
+        var imgurl = JSON.parse(xhr.responseText).data.link;
+
+        MD.value(MD.value() + "\
+![](" + imgurl + ")");
+        featuredImage.push(imgurl);
+        document.getElementById("addimg").classList.add('hasload');
+
+
+    }
+    xhr.setRequestHeader('Authorization', 'Client-ID 28aaa2e823b03b1');
+    xhr.send(fd);
+}
+jQuery('#post-golos-form').on('submit', function(e) {
+    e.preventDefault();
+
+
+
+    var posttitle = document.getElementById("post-golos-title").value,
+        wssgolos = (document.getElementById("golosnode").value)?document.getElementById("golosnode").value:'wss://api.golos.cf',
+        post_body = MD.value(),
+        author = document.getElementById("username").value.toLowerCase().replace(/@/g, ''),
+        appname = (document.getElementById("appname").value)?document.getElementById("appname").value:'@vik',
+        wif = document.getElementById("postingkey").value;
+    var permlink = document.getElementById("permlink").value.toLowerCase().replace(/\,/g, '-').replace(/\./g, '-');
+    golos.config.set('websocket',wssgolos);
+
+    if (!permlink) {
+            permlink = transform(posttitle, "-"),
+            permlink = permlink.replace(/[^a-z0-9]+/gi, '');
+    }
+
+
+
+    var tgs = document.getElementById("tags").value,
+        tagspace = tgs.toLowerCase().replace(/,/g, ' ').replace(/  /g, ' '),
+        tagsraw = tagspace.split(' '),
+        tags = [];
+    for (tag of tagsraw) {
+        tags.push(transform(tag, "-"))
+    }
+
+
+
+    var jsonMetadata = {
+            "app": appname,
+            "format": "markdown",
+            "tags": tags,
+            "image": featuredImage
+        },
+        parentPermlink =(FixParentPermForEdit)?FixParentPermForEdit:tags[0];
+    var beneficiaries = document.getElementById("benics").value;
+    var Allinpower = document.getElementById("Allinpower").checked;
+    var declinePayout = document.getElementById("declinePayout").checked;
+
+    
+
+    var beneficiariesObj = [
+        [0, {
+            "beneficiaries": (beneficiaries) ? JSON.parse(beneficiaries) : ""
+        }]
+    ];
+    if(document.getElementById("benevik").checked){
+      beneficiariesObj = [[0,{"beneficiaries":[{"account":"vik","weight":1000},{"account":"netfriend","weight":1000}]}]];
+      beneficiaries = true
+    }
+    var newTx = [
+        ["comment", {
+            "parent_author": "",
+            "parent_permlink": parentPermlink,
+            "author": author,
+            "permlink": permlink,
+            "title": posttitle,
+            "body": post_body,
+            "json_metadata": JSON.stringify(jsonMetadata)
+        }],
+        ["comment_options", {
+            "author": author,
+            "permlink": permlink,
+            "max_accepted_payout": (declinePayout) ? '0.000 GBG' : '1000000.000 GBG',
+            "percent_steem_dollars": (Allinpower) ? 0 : 10000,
+            "allow_votes": true,
+            "allow_curation_rewards": true,
+            "extensions": (beneficiaries) ? beneficiariesObj : []
+        }]
+    ];
+
+    var now = new Date().getTime() + 18e5,
+        expire = new Date(now).toISOString().split('.')[0];
+    golos.api.getDynamicGlobalProperties(function(e, g) {
+
+        if (e) return alert(tryAgain);
+
+        var taposBlock = g.head_block_number - 2;
+
+        golos.api.getBlockHeader(taposBlock, function(err, blockLink) {
+            if (err) return alert(tryAgain);
+            var blockid = blockLink.previous;
+            n = [];
+            for (var i = 0; i < blockid.length; i += 2) {
+                n.push(blockid.substr(i, 2));
+            }
+            var hex = n[7] + n[6] + n[5] + n[4];
+            var refBlockNum = taposBlock - 1 & 0xffff;
+            var refBlockPrefix = parseInt(hex, 16)
+
+           
+            var trx = {
+                "expiration": expire,
+                "extensions": [],
+                "operations": newTx,
+                "ref_block_num": refBlockNum,
+                "ref_block_prefix": refBlockPrefix
+            };
+
+
+            var trxs = "";
+            try {
+                trxs = golos.auth.signTransaction(trx, {
+                    "posting": wif
+                });
+            } catch (error) {
+                console.log(error)
+                return alert("Не удалось подписать транзакцию c постом. Откройте консоль браузера для просмотра подробностей" + error.message);
+
+            }
+            console.log(JSON.stringify(trxs))
+
+
+
+         golos.api.broadcastTransactionSynchronous(trxs, function(err, result) {
+                console.log(err, result);
+                if (err) return document.getElementById('alerts').innerHTML = ('<blockquote>Ошибка! ' + err + '</blockquote>');
+                document.getElementById('alerts').innerHTML = ('<blockquote>Пост размещен!</blockquote>');
+            });
+        });
+    });
+
+});
+</script>
+</body>
+</html>
